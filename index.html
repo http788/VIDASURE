@@ -15,6 +15,8 @@
             --white: #ffffff;
             --gray-bg: #f5f7fa;
             --text-dark: #1a202c;
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 40px rgba(0, 40, 85, 0.15);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,6 +27,15 @@
             color: var(--text-dark);
             overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        /* --- EFECTOS DE MOVIMIENTO (HOVER) --- */
+        .hover-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
 
         /* HEADER */
@@ -43,9 +54,9 @@
             border-radius: 6px; text-decoration: none; font-weight: 700;
             font-size: 0.9rem; transition: 0.3s; cursor: pointer; border: none;
         }
-        .btn-header:hover { background: var(--orange); }
+        .btn-header:hover { background: var(--orange); transform: translateY(-2px); }
 
-        /* HERO SECTION (AZUL) */
+        /* HERO SECTION */
         .hero {
             padding: 50px 5%;
             background: linear-gradient(135deg, var(--navy) 0%, #001a38 100%);
@@ -71,7 +82,7 @@
         .hero-features li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-weight: 600; color: #f0f0f0; }
         .hero-features i { color: var(--orange); }
 
-        /* QUIZ CARD (FORMULARIO) */
+        /* QUIZ CARD HERO */
         .quiz-card {
             flex: 1; min-width: 350px; max-width: 450px;
             background: var(--white); color: var(--text-dark);
@@ -111,7 +122,7 @@
             border: none; border-radius: 8px; font-weight: 800; font-size: 1rem;
             cursor: pointer; transition: 0.3s; margin-top: 10px; text-transform: uppercase;
         }
-        .btn-submit:hover { background: #d9751e; transform: translateY(-2px); }
+        .btn-submit:hover { background: #d9751e; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
         /* CARTA DE VENTAS */
         .letter-section { padding: 80px 5% 40px 5%; background: #fff; text-align: center; }
@@ -141,21 +152,20 @@
         .benefit-item h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--navy); }
         .benefit-item p { color: #666; font-size: 0.95rem; }
 
-        /* PRODUCTOS (LLAMATIVO) */
+        /* PRODUCTOS (LOS 3 SOLICITADOS) */
         .products-section { padding: 100px 5%; background: var(--white); text-align: center; }
         .products-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px; }
         
         .product-card {
             background: white; border-radius: 20px; width: 340px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
-            transition: all 0.4s ease; overflow: hidden; border: 1px solid #eee;
+            overflow: hidden; border: 1px solid #eee;
             display: flex; flex-direction: column;
         }
-        .product-card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(0, 40, 85, 0.15); }
-
+        
         .p-header { padding: 30px; color: white; text-align: center; }
         .header-mujer { background: linear-gradient(135deg, #E91E63, #ff6090); }
-        .header-segubeca { background: linear-gradient(135deg, #4CAF50, #81c784); }
+        .header-retiro { background: linear-gradient(135deg, #002855, #004080); } /* Azul SMNYL */
         .header-alfa { background: linear-gradient(135deg, #2196F3, #64b5f6); }
 
         .p-icon-circle {
@@ -167,28 +177,62 @@
         .p-title { font-weight: 800; font-size: 1.4rem; color: white; margin-bottom: 5px; }
         .p-subtitle { font-size: 0.85rem; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 1px; }
         .p-desc { font-size: 1rem; color: #555; line-height: 1.6; margin-bottom: 25px; }
-        .p-btn { padding: 12px; width: 100%; border-radius: 8px; font-weight: 700; text-decoration: none; text-align: center; display: block; border: 2px solid; transition: 0.3s; }
         
-        .btn-mujer { border-color: #E91E63; color: #E91E63; }
+        /* Botones Productos */
+        .p-btn { padding: 12px; width: 100%; border-radius: 8px; font-weight: 700; text-decoration: none; text-align: center; display: block; border: 2px solid; transition: 0.3s; cursor: pointer; }
+        
+        .btn-mujer { border-color: #E91E63; color: #E91E63; background: transparent; }
         .btn-mujer:hover { background: #E91E63; color: white; }
-        .btn-segubeca { border-color: #4CAF50; color: #4CAF50; }
-        .btn-segubeca:hover { background: #4CAF50; color: white; }
-        .btn-alfa { border-color: #2196F3; color: #2196F3; }
+        
+        .btn-retiro { border-color: var(--navy); color: var(--navy); background: transparent; }
+        .btn-retiro:hover { background: var(--navy); color: white; }
+        
+        .btn-alfa { border-color: #2196F3; color: #2196F3; background: transparent; }
         .btn-alfa:hover { background: #2196F3; color: white; }
 
-        /* ASESOR */
+        /* --- ASESOR PROFESIONAL (FONDO AZUL + COPY RESTAURADO) --- */
         .advisor-section {
-            padding: 80px 5%; background: var(--navy); color: white;
-            display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 60px;
+            padding: 100px 5%; background: var(--navy); /* Fondo Azul Oscuro */
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 80px; color: white;
         }
-        .advisor-photo { width: 320px; border-radius: 20px; border: 5px solid rgba(255,255,255,0.2); }
-        .advisor-text h2 { color: white; font-size: 2rem; font-weight: 800; margin-bottom: 20px; }
-        .advisor-text p { color: #e0e0e0; line-height: 1.7; margin-bottom: 20px; max-width: 500px; }
+        /* Efecto de Tarjeta Flotante */
+        .advisor-card-container {
+            position: relative; width: 350px;
+        }
+        .advisor-photo { 
+            width: 100%; border-radius: 20px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3); /* Sombra más oscura para fondo azul */
+            border: 5px solid rgba(255,255,255,0.1);
+        }
+        /* Insignia Flotante */
+        .advisor-badge {
+            position: absolute; bottom: 30px; right: -20px;
+            background: white; padding: 10px 20px; border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--navy);
+            font-size: 0.9rem;
+        }
+
+        .advisor-text { max-width: 550px; }
+        .advisor-text h2 { color: white; font-size: 2.5rem; font-weight: 800; margin-bottom: 5px; line-height: 1.2; }
+        .advisor-role { color: var(--orange); font-size: 1.1rem; font-weight: 700; margin-bottom: 25px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .advisor-text p { color: #e0e0e0; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+        
+        /* Contenedor del Logo SMNYL */
+        .smnyl-logo-container {
+            margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; gap: 15px;
+        }
+        .smnyl-logo-img { 
+            height: 50px; width: auto; display: block; 
+            background: white; padding: 8px; border-radius: 8px; /* Fondo blanco para el logo */
+        }
 
         /* TESTIMONIOS */
         .reviews-section { padding: 80px 5%; background: var(--white); }
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .review-card { background: #f9f9f9; padding: 30px; border-radius: 12px; }
+        .review-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eee; }
         .stars { color: #FFC107; margin-bottom: 15px; }
 
         /* FOOTER BLANCO */
@@ -240,14 +284,12 @@
             </ul>
         </div>
 
-        <div class="quiz-card" id="mainFormContainer">
-            
+        <div class="quiz-card">
             <div id="quiz-content">
                 <div style="text-align:center; margin-bottom:20px;">
                     <div style="font-weight:800; color:var(--navy); font-size:1.2rem;">DIAGNÓSTICO EXPRESS</div>
                     <div style="font-size:0.85rem; color:#666;">Descubre si calificas en 45 segundos</div>
                 </div>
-                
                 <div class="progress-container"><div class="progress-bar" id="barHero"></div></div>
 
                 <form action="https://formspree.io/f/myzrnvzk" method="POST" id="mainForm">
@@ -284,8 +326,7 @@
 
             <div id="calendar-content">
                 <h3 style="color:var(--navy); margin-bottom:10px;">¡Datos Recibidos! 🎉</h3>
-                <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">Selecciona tu horario abajo:</p>
-                
+                <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">Selecciona tu horario abajo para la asesoría:</p>
                 <div class="calendly-inline-widget" data-url="https://calendly.com/angel-vargas260201/30min" style="min-width:300px;height:450px;"></div>
             </div>
         </div>
@@ -325,22 +366,22 @@
             <p>Te ayudamos a diseñar un plan realista, personalizado y respaldado por compañías líderes en el mundo.</p>
         </div>
         <div class="benefits-grid">
-            <div class="benefit-item">
+            <div class="benefit-item hover-card">
                 <i class="fas fa-handshake b-icon"></i>
                 <h3>Confianza Total</h3>
                 <p>Estarás respaldado por la experiencia de Seguros Monterrey New York Life.</p>
             </div>
-            <div class="benefit-item">
+            <div class="benefit-item hover-card">
                 <i class="fas fa-random b-icon"></i>
                 <h3>Diversidad</h3>
                 <p>Tienes acceso a distintos portafolios de inversión (Dólares y UDIS).</p>
             </div>
-            <div class="benefit-item">
+            <div class="benefit-item hover-card">
                 <i class="fas fa-money-bill-wave b-icon"></i>
                 <h3>Liquidez</h3>
                 <p>Opciones con retiros parciales antes del vencimiento para emergencias.</p>
             </div>
-            <div class="benefit-item">
+            <div class="benefit-item hover-card">
                 <i class="fas fa-chart-line b-icon"></i>
                 <h3>Beneficios Fiscales</h3>
                 <p>Elige deducibilidad y diferimiento de impuestos según el Art. 151 del SAT.</p>
@@ -354,67 +395,83 @@
             <p style="color:#666;">Protección integral para cada etapa de tu vida.</p>
         </div>
         <div class="products-grid">
-            <div class="product-card">
+            
+            <div class="product-card hover-card">
+                <div class="p-header header-retiro">
+                    <div class="p-icon-circle"><i class="fas fa-coins"></i></div>
+                    <div class="p-title">Seguro de Retiro</div>
+                    <div class="p-subtitle">Imagina Ser</div>
+                </div>
+                <div class="p-body">
+                    <p class="p-desc">Garantiza un futuro digno con ahorros deducibles de impuestos y rendimientos superiores a la inflación. Tu "Yo del futuro" te lo agradecerá.</p>
+                    <button onclick="openPopup()" class="p-btn btn-retiro">COTIZAR RETIRO</button>
+                </div>
+            </div>
+
+            <div class="product-card hover-card">
+                <div class="p-header header-alfa">
+                    <div class="p-icon-circle"><i class="fas fa-heartbeat"></i></div>
+                    <div class="p-title">Gastos Médicos</div>
+                    <div class="p-subtitle">Alfa Medical Flex</div>
+                </div>
+                <div class="p-body">
+                    <p class="p-desc">Acceso a la mejor medicina privada de México sin descapitalizarte. Atención de primer nivel ante enfermedades y accidentes graves.</p>
+                    <button onclick="openPopup()" class="p-btn btn-alfa">COTIZAR SALUD</button>
+                </div>
+            </div>
+
+            <div class="product-card hover-card">
                 <div class="p-header header-mujer">
                     <div class="p-icon-circle"><i class="fas fa-female"></i></div>
                     <div class="p-title">Vida Mujer</div>
                     <div class="p-subtitle">Protección Femenina</div>
                 </div>
                 <div class="p-body">
-                    <p class="p-desc">Ahorro inteligente con cobertura exclusiva para cáncer femenino y complicaciones de embarazo. El seguro que te paga por estar sana.</p>
-                    <a href="#inicio" class="p-btn btn-mujer">COTIZAR AHORA</a>
+                    <p class="p-desc">El seguro diseñado para nosotras. Ahorro con protección exclusiva ante padecimientos de la mujer, embarazo y complicaciones.</p>
+                    <button onclick="openPopup()" class="p-btn btn-mujer">COTIZAR VIDA MUJER</button>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="p-header header-segubeca">
-                    <div class="p-icon-circle"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="p-title">SeguBeca</div>
-                    <div class="p-subtitle">Ahorro Educativo</div>
-                </div>
-                <div class="p-body">
-                    <p class="p-desc">El mejor regalo es su futuro. Garantiza el 100% de la universidad de tus hijos, incluso si llegas a faltar o invalidarte.</p>
-                    <a href="#inicio" class="p-btn btn-segubeca">COTIZAR AHORA</a>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="p-header header-alfa">
-                    <div class="p-icon-circle"><i class="fas fa-heartbeat"></i></div>
-                    <div class="p-title">Alfa Medical</div>
-                    <div class="p-subtitle">Gastos Médicos</div>
-                </div>
-                <div class="p-body">
-                    <p class="p-desc">Acceso a la mejor medicina privada de México. Tú eliges dónde atenderte y cuánto pagar con deducibles flexibles.</p>
-                    <a href="#inicio" class="p-btn btn-alfa">COTIZAR AHORA</a>
-                </div>
-            </div>
+
         </div>
     </section>
 
     <section class="advisor-section">
-        <img src="asesor.jpg" alt="Asesor Profesional" class="advisor-photo">
+        <div class="advisor-card-container hover-card">
+            <img src="asesor.jpg" alt="Jesus Berrecil" class="advisor-photo">
+            <div class="advisor-badge">
+                <i class="fas fa-check-circle" style="color:#25D366;"></i> Verificado
+            </div>
+        </div>
+        
         <div class="advisor-text">
-            <small style="color:var(--orange); font-weight:700; letter-spacing:1px;">TU ALIADO EXPERTO</small>
-            <h2>Respaldo Absoluto</h2>
-            <p>En Vidasure no improvisamos. Somos socios comerciales de <b>Seguros Monterrey New York Life</b>.</p>
-            <p>Mi compromiso es diseñar una estrategia que proteja tu patrimonio de la inflación y te garantice libertad financiera.</p>
-            <img src="https://mnyl.com.mx/wp-content/themes/smny/assets/images/logo_smnyl.svg" style="height:40px; margin-top:20px; background:white; padding:5px; border-radius:5px;">
+            <h2>Jesus Berrecil</h2>
+            <span class="advisor-role">Estratega Patrimonial Senior</span>
+            
+            <p><b>No soy solo un vendedor de seguros, soy tu arquitecto financiero.</b></p>
+            <p>En un mundo económico volátil, no puedes dejar tu futuro a la suerte. Mi misión en <b>Vidasure</b> es brindarte la estructura exacta que tu familia necesita: blindaje contra inflación, eficiencia fiscal y liquidez estratégica.</p>
+            <p>Con el respaldo de <b>Seguros Monterrey New York Life</b>, no solo prometemos bienestar, lo garantizamos por contrato.</p>
+            
+            <div class="smnyl-logo-container">
+                <span style="font-size:0.8rem; color:rgba(255,255,255,0.7); font-weight:700;">SOCIO COMERCIAL:</span>
+                <img src="logo-smnyl.png" alt="Seguros Monterrey New York Life" class="smnyl-logo-img">
+            </div>
         </div>
     </section>
 
     <section class="reviews-section">
         <h2 style="text-align:center; font-size:2rem; font-weight:800; margin-bottom:50px; color:var(--navy);">Lo que dicen Nuestros Clientes</h2>
         <div class="reviews-grid">
-            <div class="review-card">
+            <div class="review-card hover-card">
                 <div class="stars">★★★★★</div>
                 <p class="r-text">"La mejor decisión que tomé. Me explicaron cómo deducir impuestos y ahora el SAT me ayuda a pagar mi retiro."</p>
                 <span class="r-author">Ricardo M. (Empresario)</span>
             </div>
-            <div class="review-card">
+            <div class="review-card hover-card">
                 <div class="stars">★★★★★</div>
                 <p class="r-text">"Contraté SeguBeca para mis hijos. La tranquilidad de saber que su escuela está pagada no tiene precio."</p>
                 <span class="r-author">Karla G. (Madre de Familia)</span>
             </div>
-            <div class="review-card">
+            <div class="review-card hover-card">
                 <div class="stars">★★★★★</div>
                 <p class="r-text">"Excelente atención. Me hicieron un plan a mi medida sin presionarme. Muy profesionales."</p>
                 <span class="r-author">Miguel Ángel R. (Arquitecto)</span>
@@ -484,12 +541,11 @@
     </div>
 
     <script>
-        // VARIABLE DE CONTROL (Smart Sensor)
         let userIsBusy = false;
 
-        // --- 1. QUIZ LOGIC HERO ---
+        // --- HERO LOGIC ---
         function nextStepHero(stepNum) {
-            userIsBusy = true; // El usuario está interactuando
+            userIsBusy = true;
             setTimeout(() => {
                 document.getElementById('hStep1').classList.remove('active');
                 document.getElementById('hStep2').classList.remove('active');
@@ -502,44 +558,32 @@
             }, 300);
         }
 
-        // --- 2. AJAX FORM HERO ---
         const heroForm = document.getElementById('mainForm');
-        // Detectar si escribe en los inputs del hero
         heroForm.addEventListener('input', () => { userIsBusy = true; });
-
         heroForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = heroForm.querySelector('button');
             const originalText = btn.innerText;
             btn.innerText = "Enviando...";
-            
             const data = new FormData(heroForm);
             fetch("https://formspree.io/f/myzrnvzk", {
-                method: 'POST',
-                body: data,
-                headers: { 'Accept': 'application/json' }
+                method: 'POST', body: data, headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    // OCULTAR FORM, MOSTRAR CALENDARIO
                     document.getElementById('quiz-content').style.display = 'none';
                     document.getElementById('calendar-content').style.display = 'block';
                 } else {
-                    alert("Error al enviar. Intenta de nuevo.");
+                    alert("Error. Intenta de nuevo.");
                     btn.innerText = originalText;
                 }
             });
         });
 
-        // --- 3. POPUP LOGIC ---
+        // --- POPUP LOGIC ---
         function openPopup() { document.getElementById('popupModal').classList.add('active'); }
         function closePopup() { document.getElementById('popupModal').classList.remove('active'); }
 
-        // Timer Inteligente: Solo abre si userIsBusy es falso
-        setTimeout(() => {
-            if (!userIsBusy) {
-                openPopup();
-            }
-        }, 30000); // 30s
+        setTimeout(() => { if (!userIsBusy) openPopup(); }, 30000); // Smart Timer
 
         function nextStepModal(stepNum) {
             setTimeout(() => {
@@ -554,7 +598,6 @@
             }, 300);
         }
 
-        // --- 4. AJAX FORM POPUP ---
         const modalForm = document.getElementById('modalForm');
         modalForm.addEventListener('submit', function(e) {
             e.preventDefault();
