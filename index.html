@@ -74,7 +74,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Ajuste de H1 para el nuevo copy */
         .hero h1 { font-size: 2.8rem; line-height: 1.15; color: white; font-weight: 800; margin-bottom: 20px; }
         .hero span { color: var(--orange); }
         .hero p { font-size: 1.15rem; color: #e0e0e0; margin-bottom: 30px; line-height: 1.7; }
@@ -88,9 +87,8 @@
             flex: 1; min-width: 350px; max-width: 450px;
             background: var(--white); color: var(--text-dark);
             padding: 35px; border-radius: 16px;
-            /* Sombra y borde para resaltar el formulario como pediste */
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            border: 2px solid var(--orange); /* Borde completo naranja para resaltar */
+            border: 2px solid var(--orange);
             position: relative; z-index: 10;
             min-height: 550px; 
         }
@@ -288,7 +286,7 @@
                 </div>
                 <div class="progress-container"><div class="progress-bar" id="barHero"></div></div>
 
-                <form action="https://formspree.io/f/myzrnvzk" method="POST" id="mainForm">
+                <form action="https://formspree.io/f/mzznlvwv" method="POST" id="mainForm">
                     <input type="hidden" name="_subject" value="🔔 Lead Hero Section">
                     
                     <div class="step active" id="hStep1">
@@ -323,10 +321,11 @@
             <div id="calendar-content">
                 <h3 style="color:var(--navy); margin-bottom:10px;">¡Datos Recibidos! 🎉</h3>
                 <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">Selecciona tu horario abajo para la asesoría:</p>
-                <div class="calendly-inline-widget" data-url="https://calendly.com/angel-vargas260201/30min" style="min-width:300px;height:450px;"></div>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/vidasure/videollamada?back=1&month=2025-12" style="min-width:300px;height:450px;"></div>
             </div>
         </div>
     </section>
+
     <section class="letter-section">
         <div class="letter-container">
             <div class="letter-title">Querido Lector...</div>
@@ -381,6 +380,11 @@
                 <h3>Beneficios Fiscales</h3>
                 <p>Elige deducibilidad y diferimiento de impuestos según el Art. 151 del SAT.</p>
             </div>
+            <div class="benefit-item hover-card">
+                <i class="fas fa-user-check b-icon"></i>
+                <h3>Acompañamiento hasta el final</h3>
+                <p>No eres una póliza más. Te guiamos durante toda la vida del plan, asegurando que se cumpla lo prometido.</p>
+            </div>
         </div>
     </section>
 
@@ -432,14 +436,14 @@
 
     <section class="advisor-section">
         <div class="advisor-card-container hover-card">
-            <img src="asesor.jpg" alt="Jesus Berrecil" class="advisor-photo">
+            <img src="asesor.jpg" alt="Jesus Becerril" class="advisor-photo">
             <div class="advisor-badge">
                 <i class="fas fa-check-circle" style="color:#25D366;"></i> Verificado
             </div>
         </div>
         
         <div class="advisor-text">
-            <h2>Jesus Becerril</h2>
+            <h2>Jesus Berrecil</h2>
             <span class="advisor-role">Estratega Patrimonial Senior</span>
             
             <p><b>No soy solo un vendedor de seguros, soy tu arquitecto financiero.</b></p>
@@ -481,6 +485,7 @@
             </div>
         </div>
     </section>
+
     <footer>
         <img src="logo.png" alt="Vidasure" class="footer-logo">
         <p style="margin-bottom:20px;">Tu futuro financiero comienza hoy.</p>
@@ -502,7 +507,7 @@
                 </div>
                 <div class="progress-container"><div class="progress-bar" id="barModal"></div></div>
                 
-                <form action="https://formspree.io/f/myzrnvzk" method="POST" id="modalForm">
+                <form action="https://formspree.io/f/mzznlvwv" method="POST" id="modalForm">
                     <input type="hidden" name="_subject" value="🔔 Lead desde POPUP">
                     
                     <div class="step active" id="mStep1">
@@ -536,7 +541,7 @@
 
             <div id="popup-calendar-content">
                 <h3 style="color:var(--navy);">¡Agenda tu llamada! 👇</h3>
-                <div class="calendly-inline-widget" data-url="https://calendly.com/angel-vargas260201/30min" style="min-width:300px;height:400px;"></div>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/vidasure/videollamada?back=1&month=2025-12" style="min-width:300px;height:400px;"></div>
             </div>
 
         </div>
@@ -568,7 +573,8 @@
             const originalText = btn.innerText;
             btn.innerText = "Enviando...";
             const data = new FormData(heroForm);
-            fetch("https://formspree.io/f/myzrnvzk", {
+            // CAMBIO REALIZADO: URL del fetch actualizada
+            fetch("https://formspree.io/f/mzznlvwv", {
                 method: 'POST', body: data, headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
@@ -606,7 +612,8 @@
             const btn = modalForm.querySelector('button');
             btn.innerText = "Enviando...";
             const data = new FormData(modalForm);
-            fetch("https://formspree.io/f/myzrnvzk", {
+            // CAMBIO REALIZADO: URL del fetch actualizada en modal
+            fetch("https://formspree.io/f/mzznlvwv", {
                 method: 'POST', body: data, headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
@@ -623,4 +630,3 @@
     </script>
 </body>
 </html>
-
