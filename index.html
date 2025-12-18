@@ -7,10 +7,25 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'TU_ID_DE_PIXEL_AQUI'); /* <--- IMPORTANTE: REEMPLAZA CON TU ID REAL */
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=TU_ID_DE_PIXEL_AQUI&ev=PageView&noscript=1"
+    /></noscript>
     <style>
         :root {
-            --navy: #002855;    /* Azul Monterrey */
+            --navy: #002855;    /* Azul Rey / Monterrey */
             --orange: #F68D2E;  /* Naranja Vidasure */
             --white: #ffffff;
             --gray-bg: #f5f7fa;
@@ -29,14 +44,9 @@
             line-height: 1.6;
         }
 
-        /* --- EFECTOS DE MOVIMIENTO (HOVER) --- */
-        .hover-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .hover-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
+        /* --- UTILIDADES --- */
+        .hover-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .hover-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
 
         /* HEADER */
         header {
@@ -93,7 +103,6 @@
             min-height: 550px; 
         }
         
-        /* Contenedores para AJAX */
         #quiz-content { display: block; animation: fadeIn 0.5s; }
         #calendar-content { display: none; animation: fadeIn 0.5s; text-align: center; padding-top: 20px; }
 
@@ -105,7 +114,6 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .question-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 15px; display: block; }
-
         .option-label {
             display: flex; align-items: center; padding: 12px 15px; margin-bottom: 10px;
             border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: 0.2s;
@@ -113,16 +121,51 @@
         }
         .option-label:hover { border-color: var(--orange); background: #fffbf0; transform: translateX(3px); }
         .option-input { margin-right: 12px; accent-color: var(--orange); transform: scale(1.2); }
-
         .input-field { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
         .input-field:focus { border-color: var(--orange); outline: none; }
-
         .btn-submit {
             width: 100%; padding: 16px; background: var(--orange); color: white;
             border: none; border-radius: 8px; font-weight: 800; font-size: 1rem;
             cursor: pointer; transition: 0.3s; margin-top: 10px; text-transform: uppercase;
         }
         .btn-submit:hover { background: #d9751e; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* --- NUEVA SECCIÓN DE VALIDACIÓN (ESTILOS MEJORADOS) --- */
+        .validation-section {
+            padding: 60px 5%;
+            background: linear-gradient(to bottom, #f8f9fa 0%, #eef2f6 100%);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .validation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .val-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        .val-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 40, 85, 0.1); }
+        
+        /* Estilos específicos Azul y Naranja */
+        .val-card-orange { border-top: 6px solid var(--orange); }
+        .val-card-blue { border-top: 6px solid var(--navy); }
+        
+        .val-icon { font-size: 2.5rem; margin-bottom: 20px; display: inline-block; }
+        .val-title { font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 15px; }
+        .val-text { font-size: 1rem; color: #555; line-height: 1.7; }
+        .val-tag { 
+            display: inline-block; padding: 5px 12px; border-radius: 20px; 
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px;
+        }
 
         /* CARTA DE VENTAS */
         .letter-section { padding: 80px 5% 40px 5%; background: #fff; text-align: center; }
@@ -155,19 +198,16 @@
         /* PRODUCTOS */
         .products-section { padding: 100px 5%; background: var(--white); text-align: center; }
         .products-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px; }
-        
         .product-card {
             background: white; border-radius: 20px; width: 340px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
             overflow: hidden; border: 1px solid #eee;
             display: flex; flex-direction: column;
         }
-        
         .p-header { padding: 30px; color: white; text-align: center; }
         .header-mujer { background: linear-gradient(135deg, #E91E63, #ff6090); }
         .header-retiro { background: linear-gradient(135deg, #002855, #004080); }
         .header-alfa { background: linear-gradient(135deg, #2196F3, #64b5f6); }
-
         .p-icon-circle {
             background: rgba(255,255,255,0.2); width: 70px; height: 70px; border-radius: 50%;
             display: flex; justify-content: center; align-items: center; margin: 0 auto 15px auto;
@@ -177,19 +217,15 @@
         .p-title { font-weight: 800; font-size: 1.4rem; color: white; margin-bottom: 5px; }
         .p-subtitle { font-size: 0.85rem; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 1px; }
         .p-desc { font-size: 1rem; color: #555; line-height: 1.6; margin-bottom: 25px; }
-        
         .p-btn { padding: 12px; width: 100%; border-radius: 8px; font-weight: 700; text-decoration: none; text-align: center; display: block; border: 2px solid; transition: 0.3s; cursor: pointer; }
-        
         .btn-mujer { border-color: #E91E63; color: #E91E63; background: transparent; }
         .btn-mujer:hover { background: #E91E63; color: white; }
-        
         .btn-retiro { border-color: var(--navy); color: var(--navy); background: transparent; }
         .btn-retiro:hover { background: var(--navy); color: white; }
-        
         .btn-alfa { border-color: #2196F3; color: #2196F3; background: transparent; }
         .btn-alfa:hover { background: #2196F3; color: white; }
 
-        /* ASESOR PROFESIONAL */
+        /* ASESOR */
         .advisor-section {
             padding: 100px 5%; background: var(--navy);
             display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 80px; color: white;
@@ -207,20 +243,15 @@
             display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--navy);
             font-size: 0.9rem;
         }
-
         .advisor-text { max-width: 550px; }
         .advisor-text h2 { color: white; font-size: 2.5rem; font-weight: 800; margin-bottom: 5px; line-height: 1.2; }
         .advisor-role { color: var(--orange); font-size: 1.1rem; font-weight: 700; margin-bottom: 25px; display: block; text-transform: uppercase; letter-spacing: 1px; }
         .advisor-text p { color: #e0e0e0; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
-        
         .smnyl-logo-container {
             margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);
             display: flex; align-items: center; gap: 15px;
         }
-        .smnyl-logo-img { 
-            height: 50px; width: auto; display: block; 
-            background: white; padding: 8px; border-radius: 8px; 
-        }
+        .smnyl-logo-img { height: 50px; width: auto; display: block; background: white; padding: 8px; border-radius: 8px; }
 
         /* TESTIMONIOS */
         .reviews-section { padding: 80px 5%; background: var(--white); }
@@ -229,9 +260,7 @@
         .stars { color: #FFC107; margin-bottom: 15px; }
 
         /* FOOTER */
-        footer { 
-            background: #FFFFFF; padding: 60px 5% 30px 5%; text-align: center; color: #666; border-top: 1px solid #eee;
-        }
+        footer { background: #FFFFFF; padding: 60px 5% 30px 5%; text-align: center; color: #666; border-top: 1px solid #eee; }
         .footer-logo { height: 55px; margin-bottom: 25px; }
         .social-icons a { 
             display: inline-flex; width: 45px; height: 45px; border-radius: 50%;
@@ -253,7 +282,6 @@
         }
         #popup-quiz-content { display: block; }
         #popup-calendar-content { display: none; text-align: center; padding-top: 20px; }
-        
         .close-modal { position: absolute; top: 10px; right: 15px; font-size: 2rem; cursor: pointer; color: #999; }
     </style>
 </head>
@@ -267,14 +295,15 @@
     <section class="hero" id="inicio">
         <div class="hero-text">
             <span class="badge-hero">PLANEACIÓN DE RETIRO</span>
-            <h1>Protege tu Futuro y el de tu Familia: Un <span style="color:var(--orange)">Retiro Digno Garantizado</span></h1>
             
-            <p>No dejes tu estabilidad financiera en manos del azar. Diseñamos un plan de retiro personalizado que blinda tus ahorros y asegura tu calidad de vida, pase lo que pase.</p>
+            <h1>Maximiza tu Patrimonio: <br> Capitalización Inteligente y <span style="color:var(--orange)">Blindaje Fiscal</span></h1>
+            
+            <p>Diseñamos tu estrategia a la medida: <b>Multiplica tu capital</b> con Interés Compuesto (Meta $10M) o <b>Recupera Impuestos</b> del SAT (Art. 151). Todo con el respaldo de Seguros Monterrey New York Life.</p>
             
             <ul class="hero-features">
-                <li><i class="fas fa-check-circle"></i> Rendimiento superior a la inflación (UDIS).</li>
-                <li><i class="fas fa-check-circle"></i> Estrategia Fiscal (PPR Art. 151).</li>
-                <li><i class="fas fa-check-circle"></i> Respaldo de Seguros Monterrey NYL.</li>
+                <li><i class="fas fa-chart-line"></i> <b>Jóvenes:</b> Proyecciones de hasta $10 Millones.</li>
+                <li><i class="fas fa-file-invoice-dollar"></i> <b>Adultos:</b> Deducibilidad de impuestos al 100%.</li>
+                <li><i class="fas fa-shield-alt"></i> <b>Seguridad:</b> Ahorro protegido en UDIS o Dólares.</li>
             </ul>
         </div>
 
@@ -321,8 +350,26 @@
             <div id="calendar-content">
                 <h3 style="color:var(--navy); margin-bottom:10px;">¡Datos Recibidos! 🎉</h3>
                 <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">Selecciona tu horario abajo para la asesoría:</p>
-                <div class="calendly-inline-widget" data-url="https://calendly.com/vidasure/videollamada?back=1&month=2025-12" style="min-width:300px;height:450px;"></div>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/turetirosmnyl65/30min?month=2025-12" style="min-width:300px;height:450px;"></div>
             </div>
+        </div>
+    </section>
+
+    <section class="validation-section">
+        <div class="validation-grid">
+            
+            <div class="val-card val-card-orange">
+                <div class="val-tag" style="background:#fff3e0; color:var(--orange);">Menores de 35 años</div>
+                <h3 class="val-title"><i class="fas fa-chart-line val-icon" style="color:var(--orange)"></i><br>El Poder del Tiempo</h3>
+                <p class="val-text">Vienes del anuncio de los <b>$10 Millones</b>. Aquí usamos el <b>Interés Compuesto</b> a tu favor. El tiempo es tu mayor activo: pequeñas sumas hoy crean una fortuna mañana.</p>
+            </div>
+
+            <div class="val-card val-card-blue">
+                <div class="val-tag" style="background:#e3f2fd; color:var(--navy);">Mayores de 35 años</div>
+                <h3 class="val-title"><i class="fas fa-file-invoice-dollar val-icon" style="color:var(--navy)"></i><br>Estrategia Fiscal</h3>
+                <p class="val-text">Vienes buscando <b>Deducibilidad</b>. Aquí aplicamos el <b>Art. 151 de la LISR</b>. Convierte tus impuestos en patrimonio y haz que el SAT financie parte de tu retiro.</p>
+            </div>
+
         </div>
     </section>
 
@@ -394,7 +441,6 @@
             <p style="color:#666;">Protección integral para cada etapa de tu vida.</p>
         </div>
         <div class="products-grid">
-            
             <div class="product-card hover-card">
                 <div class="p-header header-retiro">
                     <div class="p-icon-circle"><i class="fas fa-coins"></i></div>
@@ -430,7 +476,6 @@
                     <button onclick="openPopup()" class="p-btn btn-mujer">COTIZAR VIDA MUJER</button>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -573,11 +618,13 @@
             const originalText = btn.innerText;
             btn.innerText = "Enviando...";
             const data = new FormData(heroForm);
-            // CAMBIO REALIZADO: URL del fetch actualizada
             fetch("https://formspree.io/f/mzznlvwv", {
                 method: 'POST', body: data, headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
+                    // Lead de Meta (Pixel)
+                    fbq('track', 'Lead');
+
                     document.getElementById('quiz-content').style.display = 'none';
                     document.getElementById('calendar-content').style.display = 'block';
                 } else {
@@ -612,11 +659,13 @@
             const btn = modalForm.querySelector('button');
             btn.innerText = "Enviando...";
             const data = new FormData(modalForm);
-            // CAMBIO REALIZADO: URL del fetch actualizada en modal
             fetch("https://formspree.io/f/mzznlvwv", {
                 method: 'POST', body: data, headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
+                    // Lead de Meta (Pixel)
+                    fbq('track', 'Lead');
+
                     document.getElementById('popup-quiz-content').style.display = 'none';
                     document.getElementById('popup-calendar-content').style.display = 'block';
                 }
@@ -630,5 +679,3 @@
     </script>
 </body>
 </html>
-
-
