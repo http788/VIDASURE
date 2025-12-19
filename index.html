@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://assets.calendly.com https://calendly.com; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://assets.calendly.com; 
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; 
+        img-src 'self' data: https://www.facebook.com; 
+        frame-src 'self' https://calendly.com https://m.stripe.network; 
+        connect-src 'self' https://formspree.io https://calendly.com https://api.calendly.com https://www.facebook.com https://connect.facebook.net;
+    ">
+    
     <title>VIDASURE | Ingeniería Patrimonial</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -17,11 +27,11 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'TU_ID_DE_PIXEL_AQUI'); /* <--- IMPORTANTE: REEMPLAZA CON TU ID REAL */
+    fbq('init', '1421849212878409');
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=TU_ID_DE_PIXEL_AQUI&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1421849212878409&ev=PageView&noscript=1"
     /></noscript>
     <style>
         :root {
